@@ -89,10 +89,11 @@ jobs:
       - name: Login to Amazon ECR
         uses: aws-actions/amazon-ecr-login@v2
 
-      - name: Build backend image
+      - name: Build frontend image
         run: |
           docker build \
-            -t ${{ secrets.AWS_ACCOUNT_ID }}.dkr.ecr.${{ secrets.AWS_REGION }}.amazonaws.com/backend:${{ github.sha }} .
+            --build-arg REACT_APP_MOVIE_API_URL=${{ secrets.REACT_APP_MOVIE_API_URL }} \
+            -t ${{ secrets.FRONTEND_ECR_REPO }}:${{ github.sha }} .
 
       - name: Push Docker image
         run: |
