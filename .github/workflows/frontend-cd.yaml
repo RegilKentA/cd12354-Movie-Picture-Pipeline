@@ -123,14 +123,7 @@ jobs:
         uses: azure/setup-kubectl@v4
 
       - name: Install kustomize
-        run: |
-          curl -sLo kustomize.tar.gz https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize/v5.4.2/kustomize_v5.4.2_linux_amd64.tar.gz
-          file kustomize.tar.gz
-          tar -xzf kustomize.tar.gz
-          chmod +x kustomize
-          sudo mv kustomize /usr/local/bin/
-          kustomize version
-
+        uses: imranismail/setup-kustomize@v2
 
       - name: Set frontend image
         run: |
