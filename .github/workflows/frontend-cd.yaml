@@ -97,7 +97,8 @@ jobs:
 
       - name: Push Docker image
         run: |
-          docker push ${{ secrets.FRONTEND_ECR_REPO }}:${GITHUB_SHA}
+          docker push ${{ secrets.FRONTEND_ECR_REPO }}:${{ github.sha }}
+
 
   deploy:
     runs-on: ubuntu-latest
